@@ -3,6 +3,7 @@ from qiskit.visualization import plot_histogram
 import numpy as np
 from math import pi as pi
 from QuantumFourierTransform import qft
+import matplotlib.pyplot as plt
 
 
 def qpe_rotations(qc, measure_qubits_num, unitary_matrix, psi_qubits):
@@ -47,7 +48,8 @@ u_matrix.p(pi/4, 0)
 qc = QuantumCircuit(n + psi_n, n)
 qc.x(n)
 qpe(qc, n, u_matrix, psi_n)
-qc.draw()
+qc.draw(output='mpl')
+plt.show()
 
 qasm_sim = Aer.get_backend('qasm_simulator')
 shots = 2048
@@ -57,4 +59,5 @@ results = qasm_sim.run(qobj).result()
 answer = results.get_counts()
 
 plot_histogram(answer)
+plt.show()
 
