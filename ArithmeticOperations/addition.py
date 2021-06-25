@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from qiskit.visualization import plot_histogram
 
 
-def addition(a, b):
+def addition_3n_plus_1(a, b):
     single_circuit_size = max(a.num_qubits, b.num_qubits)
     a_plus_b = QuantumCircuit(single_circuit_size * 3 + 1, single_circuit_size + 1)
     a_plus_b.append(a, range(single_circuit_size))
@@ -30,7 +30,7 @@ a.x([0, 2])
 b = QuantumCircuit(4, name='b')
 b.x([2, 3])
 
-a_plus_b = addition(a, b)
+a_plus_b = addition_3n_plus_1(a, b)
 a_plus_b.draw(output='mpl', scale=0.5)
 plt.show()
 
