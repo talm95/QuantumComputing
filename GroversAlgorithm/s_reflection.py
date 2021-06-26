@@ -2,7 +2,7 @@ from qiskit import QuantumCircuit
 
 
 def reflect_around_s_operation(number_of_qubits):
-    s_reflection = QuantumCircuit(number_of_qubits)
+    s_reflection = QuantumCircuit(number_of_qubits, name='s_reflection')
     for qubit in range(number_of_qubits):
         s_reflection.h(qubit)
     for qubit in range(number_of_qubits):
