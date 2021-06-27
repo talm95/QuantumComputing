@@ -1,5 +1,12 @@
-from qiskit import QuantumCircuit, QuantumRegister
 from math import pi as pi
+
+
+# This qft is without concerning qiskit's reverse order
+# def qft_rotations(qc, n):
+#     for qubit in range(n):
+#         qc.h(qubit)
+#         for controlled in range(qubit + 1, n):
+#             qc.cp(pi/(2 ** (controlled - qubit)), qubit, controlled)
 
 
 def qft_rotations(qc, n):
@@ -12,6 +19,7 @@ def qft_rotations(qc, n):
     qft_rotations(qc, n)
 
 
+# I modified the rotations method to be directly the desired circuit instead of the need to swap
 def qft_swap(qc, n):
     for qubit in range(n//2):
         qc.swap(qubit, n-1-qubit)
@@ -20,5 +28,4 @@ def qft_swap(qc, n):
 
 def qft(qc, n):
     qft_rotations(qc, n)
-    qft_swap(qc, n)
     return qc
